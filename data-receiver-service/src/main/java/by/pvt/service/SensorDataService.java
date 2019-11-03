@@ -5,6 +5,8 @@ import by.pvt.repository.SensorDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Date;
+
 @Service
 public class SensorDataService {
 
@@ -13,6 +15,7 @@ public class SensorDataService {
 
 
     public void saveData(SensorData data) {
+        data.setDate(new Date());
         dataRepository.save(data);
     }
 

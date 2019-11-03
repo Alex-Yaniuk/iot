@@ -43,10 +43,10 @@
 </nav>
 <p>Device list</p>
 <div class="list-group">
-    <c:forEach var="sensor" items="${devices}">
+    <c:forEach var="device" items="${devices}">
         <a class="list-group-item list-group-item-action"
-           href="${pageContext.request.contextPath}/device-catalog/device/${sensor.id}">${sensor}
-            <span class="badge badge-primary badge-pill">${fn:length(sensor.sensors)}</span></a>
+           href="${pageContext.request.contextPath}/device-catalog/device/${device.id}">${device}
+            <span class="badge badge-primary badge-pill">${fn:length(device.sensors)}</span></a>
     </c:forEach>
 </div>
 

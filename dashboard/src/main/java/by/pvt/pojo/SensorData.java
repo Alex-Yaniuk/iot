@@ -4,6 +4,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.Date;
 
 @Entity
 @Data
@@ -20,4 +21,6 @@ public class SensorData {
     private Long sensorId;
     @Column(name = "data")
     private Double data;
+    @Column(name = "date")
+    private Date date;
 }

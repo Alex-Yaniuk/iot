@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Device</title>
+    <title>Device list</title>
 </head>
 <body>
 
@@ -41,18 +41,13 @@
         </form>
     </div>
 </nav>
+<p>Sensor data list</p>
 
-<p>${device}</p>
-<div class="list-group">
-    <c:forEach var="sensor" items="${device.sensors}">
-        <a class="list-group-item list-group-item-action"
-        href="${pageContext.request.contextPath}/device-catalog/device/${device.id}/${sensor.id}">${sensor} chart
-        </a>
-        <a class="list-group-item list-group-item-action"
-        href="${pageContext.request.contextPath}/device-catalog/device/${device.id}/${sensor.id}/list"> list
-        </a>
+<ul class="list-group">
+    <c:forEach var="sensor" items="${sensorData}">
+        <li class="list-group-item">${sensor}</li>
     </c:forEach>
-</div>
+</ul>
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

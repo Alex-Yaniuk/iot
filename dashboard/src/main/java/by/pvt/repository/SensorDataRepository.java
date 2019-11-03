@@ -32,4 +32,14 @@ public class SensorDataRepository {
                 .list();
         return sensorData;
     }
+
+    public List<SensorData> findSensorDataById(Long deviceId, Long sensorId, int i) {
+        List<SensorData> sensorData = sessionFactory.getCurrentSession()
+                .createQuery("from SensorData where device_id=:deviceId and sensor_id = :sensorId order by id DESC", SensorData.class)
+                .setParameter("deviceId", deviceId)
+                .setParameter("sensorId",sensorId)
+                .setMaxResults(i)
+                .list();
+        return sensorData;
+    }
 }
