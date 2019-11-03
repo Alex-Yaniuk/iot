@@ -5,7 +5,7 @@ import by.pvt.service.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -18,9 +18,9 @@ public class SearchController {
     @Autowired
     private DeviceService deviceService;
 
-    @PostMapping
+    @GetMapping
     private String search(@RequestParam("search-str") String string, Model model) {
-      List<Device> devices= deviceService.searchByLocation(string);
+        List<Device> devices = deviceService.searchByLocation(string);
         model.addAttribute("devices", devices);
         return "device/search_result";
     }

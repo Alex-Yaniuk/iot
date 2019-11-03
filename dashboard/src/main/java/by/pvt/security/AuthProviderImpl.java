@@ -9,6 +9,7 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
@@ -38,6 +39,9 @@ public class AuthProviderImpl implements AuthenticationProvider {
         }
 
         List<GrantedAuthority> authorities = new ArrayList<>();
+        if (email.equals("admin@gmail.com")) {
+            authorities.add(new SimpleGrantedAuthority("ROLE_ADMIN"));
+        }
         return new UsernamePasswordAuthenticationToken(user, null, authorities);
     }
 

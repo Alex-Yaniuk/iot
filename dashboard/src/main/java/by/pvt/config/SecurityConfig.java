@@ -24,11 +24,13 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/login", "/register").anonymous()
+                .antMatchers("/login", "/registration").anonymous()
                 .antMatchers("/device-catalog").authenticated()
                 .antMatchers("/search").authenticated()
+                .antMatchers("/device-catalog/register-new-device").hasRole("ADMIN")
                 .and().csrf().disable()
                 .formLogin()
+                .and().exceptionHandling().accessDeniedPage("/")
                 .and().logout().logoutSuccessUrl("/");
 
     }
