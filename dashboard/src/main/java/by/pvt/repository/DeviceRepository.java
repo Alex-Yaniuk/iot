@@ -33,4 +33,11 @@ public class DeviceRepository {
         return sessionFactory.getCurrentSession()
                 .get(Device.class, id);
     }
+
+    public List<Device> findDeviceByLocation(String location) {
+        List<Device> devices = sessionFactory.getCurrentSession()
+                .createQuery("from Device where location like :location", Device.class)
+                .setParameter("location", location + "%").list();
+        return devices;
+    }
 }

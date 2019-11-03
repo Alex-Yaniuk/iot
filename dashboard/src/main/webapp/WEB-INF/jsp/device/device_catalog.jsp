@@ -1,6 +1,7 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -28,19 +29,28 @@
             <li class="nav-item active">
                 <a class="nav-link" href="${pageContext.request.contextPath}/device-catalog">Device list</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link" href="#">Sign up</a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link " href="#">Login </a>
-            </li>
+            <sec:authorize access="!isAuthenticated()">
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/registration">Register</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/login">Login</a>
+                </li>
+            </sec:authorize>
+            <sec:authorize access="isAuthenticated()">
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
+                </li>
+            </sec:authorize>
         </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Device search" aria-label="Search">
+        <form class="form-inline my-2 my-lg-0" action="${pageContext.request.contextPath}/search">
+            <input class="form-control mr-sm-2" name="search-str" type="search" placeholder="Device search by location" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
 </nav>
+
+
 <p>Device list</p>
 <div class="list-group">
     <c:forEach var="device" items="${devices}">

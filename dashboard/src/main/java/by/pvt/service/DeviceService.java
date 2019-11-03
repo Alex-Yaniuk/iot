@@ -38,4 +38,9 @@ public class DeviceService {
     public Device findDevice(Long id) {
         return deviceRepository.findDeviceById(id);
     }
+
+    @Transactional
+    public List<Device> searchByLocation(String location) {
+        return deviceRepository.findDeviceByLocation(location);
+    }
 }
