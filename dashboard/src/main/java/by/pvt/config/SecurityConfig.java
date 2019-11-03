@@ -24,7 +24,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-                .antMatchers("/login", "/registration").anonymous()
+                .antMatchers("/login").anonymous()
+                .antMatchers("/login").anonymous()
                 .antMatchers("/device-catalog").authenticated()
                 .antMatchers("/search").authenticated()
                 .antMatchers("/device-catalog/register-new-device").hasRole("ADMIN")

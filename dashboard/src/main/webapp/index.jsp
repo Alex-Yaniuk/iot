@@ -40,9 +40,15 @@
                     <a class="nav-link" href="${pageContext.request.contextPath}/logout">Logout</a>
                 </li>
             </sec:authorize>
+            <sec:authorize access="hasRole('ROLE_ADMIN')">
+                <li class="nav-item">
+                    <a class="nav-link" href="${pageContext.request.contextPath}/device-catalog/register-new-device">Register new device</a>
+                </li>
+            </sec:authorize>
         </ul>
         <form class="form-inline my-2 my-lg-0" action="${pageContext.request.contextPath}/search">
-            <input class="form-control mr-sm-2" name="search-str" type="search" placeholder="Device search by location" aria-label="Search">
+            <input class="form-control mr-sm-2" name="search-str" type="search" placeholder="Device search by location"
+                   aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
     </div>
