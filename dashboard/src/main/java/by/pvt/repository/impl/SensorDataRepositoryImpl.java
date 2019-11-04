@@ -1,45 +1,40 @@
-package by.pvt.repository;
+package by.pvt.repository.impl;
 
 import by.pvt.pojo.SensorData;
+import by.pvt.repository.SensorDataDao;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 @Repository
-public class SensorDataRepository {
+public class SensorDataRepositoryImpl implements SensorDataDao {
 
-    private static final Logger log = Logger.getLogger("SensorDataMvcRepository");
 
     @Autowired
     private SessionFactory sessionFactory;
 
     public List<SensorData> findAll() {
 
-        List<SensorData> data = sessionFactory.getCurrentSession()
+        return sessionFactory.getCurrentSession()
                 .createQuery("from SensorData", SensorData.class).list();
-        log.info("Read from base " + data);
-        return data;
     }
 
-    public List<SensorData> findSensorDataById(Long deviceId,Long sensorId) {
-        List<SensorData> sensorData = sessionFactory.getCurrentSession()
+    public List<SensorData> findSensorDataById(Long deviceId, Long sensorId) {
+        return sessionFactory.getCurrentSession()
                 .createQuery("from SensorData where device_id=:deviceId and sensor_id = :sensorId", SensorData.class)
                 .setParameter("deviceId", deviceId)
-                .setParameter("sensorId",sensorId)
+                .setParameter("sensorId", sensorId)
                 .list();
-        return sensorData;
     }
 
     public List<SensorData> findSensorDataById(Long deviceId, Long sensorId, int i) {
-        List<SensorData> sensorData = sessionFactory.getCurrentSession()
+        return sessionFactory.getCurrentSession()
                 .createQuery("from SensorData where device_id=:deviceId and sensor_id = :sensorId order by id DESC", SensorData.class)
                 .setParameter("deviceId", deviceId)
-                .setParameter("sensorId",sensorId)
+                .setParameter("sensorId", sensorId)
                 .setMaxResults(i)
                 .list();
-        return sensorData;
     }
 }

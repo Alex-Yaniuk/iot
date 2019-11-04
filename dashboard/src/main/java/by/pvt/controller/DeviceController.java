@@ -46,24 +46,20 @@ public class DeviceController {
     }
 
 
-
     @GetMapping("/device/{deviceId}/{sensorId}")
-    public String oneSensorDataChart(@PathVariable Long deviceId,@PathVariable Long sensorId, Model model) {
-        List<SensorData> sensorData = dataMvcService.findSensorDataLastTen(deviceId,sensorId);
+    public String oneSensorDataChart(@PathVariable Long deviceId, @PathVariable Long sensorId, Model model) {
+        List<SensorData> sensorData = dataMvcService.findSensorDataLastTen(deviceId, sensorId);
         model.addAttribute("sensorData", sensorData);
         return "sensor/show_one_sensor_data_chart";
     }
 
 
-
     @GetMapping("/device/{deviceId}/{sensorId}/list")
-    public String oneSensorDataList(@PathVariable Long deviceId,@PathVariable Long sensorId, Model model) {
-        List<SensorData> sensorData = dataMvcService.findSensorData(deviceId,sensorId);
+    public String oneSensorDataList(@PathVariable Long deviceId, @PathVariable Long sensorId, Model model) {
+        List<SensorData> sensorData = dataMvcService.findSensorData(deviceId, sensorId);
         model.addAttribute("sensorData", sensorData);
         return "sensor/show_one_sensor_data_list";
     }
-
-
 
 
 }

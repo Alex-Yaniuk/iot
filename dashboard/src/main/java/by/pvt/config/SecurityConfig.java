@@ -30,7 +30,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/search").authenticated()
                 .antMatchers("/device-catalog/register-new-device").hasRole("ADMIN")
                 .and().csrf().disable()
-                .formLogin()
+                .formLogin().loginPage("/login")
+                .loginProcessingUrl("/login/process").usernameParameter("email")
                 .and().exceptionHandling().accessDeniedPage("/")
                 .and().logout().logoutSuccessUrl("/");
 

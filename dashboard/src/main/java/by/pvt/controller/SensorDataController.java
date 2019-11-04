@@ -17,7 +17,7 @@ public class SensorDataController {
 
 
     @GetMapping
-    public String  showAll(Model model) {
+    public String showAll(Model model) {
         model.addAttribute("data", dataMvcService.findAll());
         return "sensor/show_all_sensors_data";
     }

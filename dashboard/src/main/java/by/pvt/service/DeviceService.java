@@ -1,46 +1,17 @@
 package by.pvt.service;
 
 import by.pvt.pojo.Device;
-import by.pvt.pojo.Sensor;
-import by.pvt.repository.DeviceRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
 
-import javax.transaction.Transactional;
 import java.util.List;
 
-@Service
-public class DeviceService {
+public interface DeviceService {
 
-    @Autowired
-    private DeviceRepository deviceRepository;
+    void addDevice(Device device);
 
+    List<Device> getAll();
 
-    @Transactional
-    public void addDevice(Device device) {
-        Sensor sensor = new Sensor();
-        sensor.setValue("speed");
-        Sensor sensor2 = new Sensor();
-        sensor2.setValue("temperature");
-        device.getSensors().add(sensor);
-        device.getSensors().add(sensor2);
-        sensor.setDevice(device);
-        sensor2.setDevice(device);
-        deviceRepository.addDevice(device);
-    }
+    Device findDevice(Long id);
 
-    @Transactional
-    public List<Device> getAll() {
-        return deviceRepository.findAll();
-    }
+    List<Device> searchByLocation(String location);
 
-    @Transactional
-    public Device findDevice(Long id) {
-        return deviceRepository.findDeviceById(id);
-    }
-
-    @Transactional
-    public List<Device> searchByLocation(String location) {
-        return deviceRepository.findDeviceByLocation(location);
-    }
 }

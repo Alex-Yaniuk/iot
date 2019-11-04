@@ -1,6 +1,7 @@
-package by.pvt.repository;
+package by.pvt.repository.impl;
 
 import by.pvt.pojo.AppUser;
+import by.pvt.repository.UserDao;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -8,7 +9,7 @@ import org.springframework.stereotype.Repository;
 import javax.transaction.Transactional;
 
 @Repository
-public class UserRepository {
+public class UserRepositoryImpl implements UserDao {
 
 
     @Autowired

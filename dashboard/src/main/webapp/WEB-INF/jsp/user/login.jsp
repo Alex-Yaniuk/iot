@@ -1,5 +1,3 @@
-<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<%@ taglib uri="http://java.sun.com/jsp/jstl/functions" prefix="fn" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <!doctype html>
@@ -13,25 +11,27 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
           integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
 
-    <title>Device</title>
+    <title>Login</title>
 </head>
 <body>
 
 <!-- include nav-bar -->
 <jsp:include page="/WEB-INF/jsp/util/navbar.jsp"/>
 
+
 <div class="container">
-    <div class="row text-center"><p>${device}</p></div>
-    <div class="list-group">
-        <c:forEach var="sensor" items="${device.sensors}">
-            <a class="list-group-item list-group-item-action"
-               href="${pageContext.request.contextPath}/device-catalog/device/${device.id}/${sensor.id}">${sensor} chart
-            </a>
-            <a class="list-group-item list-group-item-action"
-               href="${pageContext.request.contextPath}/device-catalog/device/${device.id}/${sensor.id}/list"> list
-            </a>
-        </c:forEach>
-    </div>
+    <form method="post" action="${pageContext.request.contextPath}/login/process">
+        <div class="form-group">
+            <label for="exampleInputEmail1">Email address</label>
+            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
+            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+        </div>
+        <div class="form-group">
+            <label for="exampleInputPassword1">Password</label>
+            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
 </div>
 
 <!-- Optional JavaScript -->

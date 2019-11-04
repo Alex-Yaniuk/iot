@@ -1,17 +1,16 @@
-package by.pvt.repository;
+package by.pvt.repository.impl;
 
 import by.pvt.pojo.Device;
+import by.pvt.repository.DeviceDao;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.logging.Logger;
 
 @Repository
-public class DeviceRepository {
+public class DeviceRepositoryImpl implements DeviceDao {
 
-    private static final Logger log = Logger.getLogger("DeviceRepository");
 
     @Autowired
     private SessionFactory sessionFactory;
@@ -22,10 +21,8 @@ public class DeviceRepository {
     }
 
     public List<Device> findAll() {
-        List<Device> devices = sessionFactory.getCurrentSession()
+        return sessionFactory.getCurrentSession()
                 .createQuery("from Device", Device.class).list();
-        log.info("Devices " + devices);
-        return devices;
     }
 
 
@@ -35,9 +32,8 @@ public class DeviceRepository {
     }
 
     public List<Device> findDeviceByLocation(String location) {
-        List<Device> devices = sessionFactory.getCurrentSession()
+        return sessionFactory.getCurrentSession()
                 .createQuery("from Device where location like :location", Device.class)
                 .setParameter("location", location + "%").list();
-        return devices;
     }
 }

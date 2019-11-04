@@ -7,6 +7,10 @@
 </head>
 <body>
 
+<!-- include nav-bar -->
+<jsp:include page="/WEB-INF/jsp/util/navbar.jsp"/>
+
+
 <c:forEach var="num" items="${data}">
     <p>${num}</p>
 </c:forEach>

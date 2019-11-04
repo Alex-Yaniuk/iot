@@ -1,7 +1,7 @@
 package by.pvt.security;
 
 import by.pvt.pojo.AppUser;
-import by.pvt.repository.UserRepository;
+import by.pvt.repository.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;
 import org.springframework.security.authentication.BadCredentialsException;
@@ -21,7 +21,7 @@ import java.util.List;
 public class AuthProviderImpl implements AuthenticationProvider {
 
     @Autowired
-    private UserRepository userRepository;
+    private UserDao userRepository;
 
     @Autowired
     private PasswordEncoder passwordEncoder;
@@ -34,7 +34,7 @@ public class AuthProviderImpl implements AuthenticationProvider {
             throw new UsernameNotFoundException("User not found");
         }
         String password = authentication.getCredentials().toString();
-        if (!passwordEncoder.matches(password,user.getPassword())) {
+        if (!passwordEncoder.matches(password, user.getPassword())) {
             throw new BadCredentialsException("Bad credentials");
         }
 
