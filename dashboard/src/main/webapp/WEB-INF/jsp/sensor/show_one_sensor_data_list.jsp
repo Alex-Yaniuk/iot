@@ -21,11 +21,31 @@
 <jsp:include page="/WEB-INF/jsp/util/navbar.jsp"/>
 
 <div class="container">
-<ul class="list-group">
-    <c:forEach var="sensor" items="${sensorData}">
-        <li class="list-group-item">${sensor}</li>
-    </c:forEach>
-</ul>
+    <div class="row text-center">
+        <div class="col-12"><h3>Sensor data</h3></div>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Device Id</th>
+            <th scope="col">Sensor Id</th>
+            <th scope="col">Data</th>
+            <th scope="col">Date</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="sensor" items="${sensorData}">
+            <tr>
+                <th scope="row">${sensor.id}</th>
+                <td>${sensor.deviceId}</td>
+                <td>${sensor.sensorId}</td>
+                <td>${sensor.data}</td>
+                <td>${sensor.date}</td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
 </div>
 
 <!-- Optional JavaScript -->

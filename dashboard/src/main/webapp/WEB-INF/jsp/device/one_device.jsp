@@ -21,17 +21,34 @@
 <jsp:include page="/WEB-INF/jsp/util/navbar.jsp"/>
 
 <div class="container">
-    <div class="row text-center"><p>${device}</p></div>
-    <div class="list-group">
-        <c:forEach var="sensor" items="${device.sensors}">
-            <a class="list-group-item list-group-item-action"
-               href="${pageContext.request.contextPath}/device-catalog/device/${device.id}/${sensor.id}">${sensor} chart
-            </a>
-            <a class="list-group-item list-group-item-action"
-               href="${pageContext.request.contextPath}/device-catalog/device/${device.id}/${sensor.id}/list"> list
-            </a>
-        </c:forEach>
+    <div class="row text-center">
+        <div class="col-12"><h3>One device sensors</h3></div>
     </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Value</th>
+            <th scope="col">Chart</th>
+            <th scope="col">List</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="sensor" items="${device.sensors}">
+            <tr>
+                <th scope="row">${sensor.id}</th>
+                <td>${sensor.value}</td>
+                <td><a class="list-group-item list-group-item-action"
+                       href="${pageContext.request.contextPath}/device-catalog/device/${device.id}/${sensor.id}">chart
+                </a></td>
+                <td><a class="list-group-item list-group-item-action"
+                       href="${pageContext.request.contextPath}/device-catalog/device/${device.id}/${sensor.id}/list">
+                    list
+                </a></td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
 </div>
 
 <!-- Optional JavaScript -->

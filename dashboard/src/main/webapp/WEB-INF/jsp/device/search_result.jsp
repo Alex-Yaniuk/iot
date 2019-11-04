@@ -21,14 +21,30 @@
 <jsp:include page="/WEB-INF/jsp/util/navbar.jsp"/>
 
 <div class="container">
-    <div class="row text-center"><p>${device}</p></div>
-<div class="list-group">
-    <c:forEach var="device" items="${devices}">
-        <a class="list-group-item list-group-item-action"
-           href="${pageContext.request.contextPath}/device-catalog/device/${device.id}">${device}
-            <span class="badge badge-primary badge-pill">${fn:length(device.sensors)}</span></a>
-    </c:forEach>
-</div>
+    <div class="row text-center">
+        <div class="col-12"><h3>Search result</h3></div>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Location</th>
+            <th scope="col">IP Address</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach var="device" items="${devices}">
+
+            <tr>
+                <th scope="row"><a class="list-group-item list-group-item-action"
+                                   href="${pageContext.request.contextPath}/device-catalog/device/${device.id}">${device.id}</a>
+                </th>
+                <td>${device.location}</td>
+                <td>${device.ipAddress}</td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
 </div>
 
 <!-- Optional JavaScript -->
