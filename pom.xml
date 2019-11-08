@@ -46,11 +46,8 @@
                         </goals>
                         <phase>process-sources</phase>
                         <configuration>
-                            <changeLogFile>src/main/resources/liquibase/changeLog.xml</changeLogFile>
-                            <url>jdbc:mysql://localhost:3306/iot?createDatabaseIfNotExist=true&amp;useSSL=false&amp;serverTimezone=UTC</url>
-                            <username>root</username>
-                            <password>root</password>
-                            <driver>com.mysql.cj.jdbc.Driver</driver>
+                            <propertyFileWillOverride>true</propertyFileWillOverride>
+                            <propertyFile>src/main/resources/liquibase/liquibase.properties</propertyFile>
                         </configuration>
                     </execution>
                 </executions>

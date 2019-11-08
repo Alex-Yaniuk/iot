@@ -1,6 +1,6 @@
 package by.pvt.repository;
 
-import by.pvt.pojo.SensorData;
+import by.pvt.model.SensorData;
 
 import java.util.List;
 

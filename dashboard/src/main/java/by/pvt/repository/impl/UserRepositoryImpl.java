@@ -1,6 +1,6 @@
 package by.pvt.repository.impl;
 
-import by.pvt.pojo.AppUser;
+import by.pvt.model.AppUser;
 import by.pvt.repository.UserDao;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -1,7 +1,7 @@
 package by.pvt.service.impl;
 
-import by.pvt.pojo.Device;
-import by.pvt.pojo.Sensor;
+import by.pvt.model.Device;
+import by.pvt.model.Sensor;
 import by.pvt.repository.DeviceDao;
 import by.pvt.service.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;

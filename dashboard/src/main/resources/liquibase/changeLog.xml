@@ -24,8 +24,9 @@
             `device_id` bigint(20) DEFAULT NULL,
             PRIMARY KEY (`id`),
             KEY `FK834yqd4p6g9s2b6ufnba8bxrs` (`device_id`),
-            CONSTRAINT `FK834yqd4p6g9s2b6ufnba8bxrs` FOREIGN KEY (`device_id`) REFERENCES `devices` (`id`)
-            ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+            CONSTRAINT `FK834yqd4p6g9s2b6ufnba8bxrs` FOREIGN KEY (`device_id`) REFERENCES `devices` (`id`) ON DELETE CASCADE
+            ) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
         </sql>
     </changeSet>
 
@@ -39,6 +40,16 @@
             `password` varchar(255) DEFAULT NULL,
             PRIMARY KEY (`id`)
             ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+        </sql>
+    </changeSet>
+
+    <changeSet id="insertAdmin" author="alex">
+        <sql>
+            INSERT INTO `iot`.`users`
+            (`id`, `email`, `firstName`, `lastName`, `password`)
+            VALUES
+            (1, 'admin@gmail.com', 'admin', 'admin', '$2a$10$tYdeWpnAIRuPQW6AWhFfQ.sqmBkFcRGIvx5VD3Hzjt1xumczbQZPO');
+
         </sql>
     </changeSet>
 

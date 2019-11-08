@@ -1,12 +1,14 @@
 package by.pvt.controller;
 
-import by.pvt.pojo.Device;
-import by.pvt.pojo.SensorData;
+import by.pvt.model.Device;
+import by.pvt.model.SensorData;
 import by.pvt.service.DeviceService;
 import by.pvt.service.SensorDataService;
+import by.pvt.util.DeviceRegistrationValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -21,7 +23,11 @@ public class DeviceController {
     @Autowired
     private SensorDataService dataMvcService;
 
+    @Autowired
+    private DeviceRegistrationValidator deviceRegistrationValidator;
+
     @GetMapping
+
     public String showAllDevices(Model model) {
         model.addAttribute("devices", deviceService.getAll());
         return "device/device_catalog";
@@ -35,12 +41,17 @@ public class DeviceController {
     }
 
     @GetMapping("/register-new-device")
-    public String registerNewDeviceView() {
+    public String registerNewDeviceView(Model model) {
+        model.addAttribute("device", new Device());
         return "device/register_new_device";
     }
 
     @PostMapping("/register-new-device")
-    public String registerNewDevicePost(@ModelAttribute Device device) {
+    public String registerNewDevicePost(@ModelAttribute("device") Device device, BindingResult result) {
+        deviceRegistrationValidator.validate(device, result);
+        if (result.hasErrors()) {
+            return "device/register_new_device";
+        }
         deviceService.addDevice(device);
         return "redirect:/device-catalog";
     }

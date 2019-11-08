@@ -25,13 +25,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/login").anonymous()
-                .antMatchers("/login").anonymous()
+                .antMatchers("/registration").anonymous()
                 .antMatchers("/device-catalog").authenticated()
                 .antMatchers("/search").authenticated()
                 .antMatchers("/device-catalog/register-new-device").hasRole("ADMIN")
                 .and().csrf().disable()
                 .formLogin().loginPage("/login")
                 .loginProcessingUrl("/login/process").usernameParameter("email")
+                .failureUrl("/login?error=true")
                 .and().exceptionHandling().accessDeniedPage("/")
                 .and().logout().logoutSuccessUrl("/");
 

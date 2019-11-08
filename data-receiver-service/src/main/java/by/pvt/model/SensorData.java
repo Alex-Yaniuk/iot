@@ -1,4 +1,4 @@
-package by.pvt.pojo;
+package by.pvt.model;
 
 import lombok.Data;
 import lombok.NoArgsConstructor;

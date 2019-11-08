@@ -1,6 +1,6 @@
 package by.pvt.controller;
 
-import by.pvt.pojo.Device;
+import by.pvt.model.Device;
 import by.pvt.service.DeviceService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

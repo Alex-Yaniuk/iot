@@ -1,5 +1,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <html>
 <head>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -13,25 +15,35 @@
 <!-- include nav-bar -->
 <jsp:include page="/WEB-INF/jsp/util/navbar.jsp"/>
 
+
+
 <div class="container">
-<form method="POST" action="${pageContext.request.contextPath}/device-catalog/register-new-device">
-
-    <div class="form-group">
-        <label for="location">Location</label>
-        <input type="text" name="location" class="form-control" id="location" placeholder="Enter device location">
-        <small class="form-text text-muted">Please enter device location</small>
+    <div class="row text-center">
+        <div class="col-12"><h3>Register new device</h3></div>
     </div>
-    <div class="form-group">
-        <label for="ipAddress">IP Address</label>
-        <input type="text" name="ipAddress" class="form-control" id="ipAddress" placeholder="Enter device ipAddress">
-        <small class="form-text text-muted">Please enter device ipAddress</small>
-    </div>
+    <form:form method="post" modelAttribute="device" action="${pageContext.request.contextPath}/device-catalog/register-new-device">
 
+        <spring:bind path="location">
+            <div class="form-group ">
+                <label for="location">location</label>
+                <form:input path="location" type="text" id="location" placeholder="Enter location"
+                            cssClass="form-control ${status.error ? 'is-invalid' : ''}"/>
+                <form:errors path="location" cssClass="invalid-feedback"/>
+            </div>
+        </spring:bind>
 
-    <button type="submit" class="btn btn-primary">Submit</button>
-</form>
+        <spring:bind path="ipAddress">
+            <div class="form-group ">
+                <label for="ipAddress">Ip address</label>
+                <form:input path="ipAddress" type="text" id="ipAddress" placeholder="Enter ip address"
+                            cssClass="form-control ${status.error ? 'is-invalid' : ''}"/>
+                <form:errors path="ipAddress" cssClass="invalid-feedback"/>
+            </div>
+        </spring:bind>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form:form>
 </div>
-
 
 
 

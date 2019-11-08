@@ -1,6 +1,6 @@
 package by.pvt.service;
 
-import by.pvt.pojo.Device;
+import by.pvt.model.Device;
 
 import java.util.List;
 

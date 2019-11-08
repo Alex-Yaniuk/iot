@@ -1,6 +1,6 @@
 package by.pvt.controller;
 
-import by.pvt.pojo.SensorData;
+import by.pvt.model.SensorData;
 import by.pvt.service.SensorDataService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;

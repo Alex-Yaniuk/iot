@@ -1,6 +1,6 @@
 package by.pvt.service.impl;
 
-import by.pvt.pojo.SensorData;
+import by.pvt.model.SensorData;
 import by.pvt.repository.SensorDataDao;
 import by.pvt.service.SensorDataService;
 import org.springframework.beans.factory.annotation.Autowired;

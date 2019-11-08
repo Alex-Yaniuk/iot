@@ -1,6 +1,6 @@
 package by.pvt.service;
 
-import by.pvt.pojo.AppUser;
+import by.pvt.model.AppUser;
 
 public interface UserService {
 

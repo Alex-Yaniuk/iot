@@ -1,6 +1,6 @@
 package by.pvt.service.impl;
 
-import by.pvt.pojo.AppUser;
+import by.pvt.model.AppUser;
 import by.pvt.repository.UserDao;
 import by.pvt.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;

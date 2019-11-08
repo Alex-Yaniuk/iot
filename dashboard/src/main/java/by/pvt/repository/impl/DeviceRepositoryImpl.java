@@ -1,6 +1,6 @@
 package by.pvt.repository.impl;
 
-import by.pvt.pojo.Device;
+import by.pvt.model.Device;
 import by.pvt.repository.DeviceDao;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

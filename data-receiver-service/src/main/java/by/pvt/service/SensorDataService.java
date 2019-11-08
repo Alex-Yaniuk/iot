@@ -1,6 +1,6 @@
 package by.pvt.service;
 
-import by.pvt.pojo.SensorData;
+import by.pvt.model.SensorData;
 
 public interface SensorDataService {
 

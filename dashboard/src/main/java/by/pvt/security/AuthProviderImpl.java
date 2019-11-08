@@ -1,6 +1,6 @@
 package by.pvt.security;
 
-import by.pvt.pojo.AppUser;
+import by.pvt.model.AppUser;
 import by.pvt.repository.UserDao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationProvider;

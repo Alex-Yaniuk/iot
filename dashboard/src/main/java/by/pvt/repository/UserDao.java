@@ -1,6 +1,6 @@
 package by.pvt.repository;
 
-import by.pvt.pojo.AppUser;
+import by.pvt.model.AppUser;
 
 public interface UserDao {
 

@@ -1,5 +1,8 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!doctype html>
 <html lang="en">
 <head>
@@ -20,19 +23,36 @@
 
 
 <div class="container">
+    <div class="row text-center">
+        <div class="col-12"><h3>Login</h3></div>
+    </div>
     <form method="post" action="${pageContext.request.contextPath}/login/process">
-        <div class="form-group">
+        <div class="form-group ">
             <label for="exampleInputEmail1">Email address</label>
-            <input type="email" name="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <input type="email" name="email" class="form-control <c:if test="${error != null}">is-invalid</c:if>"
+                   id="exampleInputEmail1" aria-describedby="emailHelp"
+                   placeholder="Enter email">
+            <c:if test="${error != null}">
+                <div class="invalid-feedback">
+                        ${error}
+                </div>
+            </c:if>
         </div>
         <div class="form-group">
             <label for="exampleInputPassword1">Password</label>
-            <input type="password" name="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
+            <input type="password" name="password"  class="form-control <c:if test="${error != null}">is-invalid</c:if>" id="exampleInputPassword1"
+                   placeholder="Password">
+            <c:if test="${error != null}">
+                <div class="invalid-feedback">
+                        ${error}
+                </div>
+            </c:if>
         </div>
+
         <button type="submit" class="btn btn-primary">Submit</button>
     </form>
 </div>
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->
