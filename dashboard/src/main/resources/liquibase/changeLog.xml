@@ -43,17 +43,5 @@
         </sql>
     </changeSet>
 
-    <changeSet id="insertAdmin" author="alex">
-        <sql>
-            INSERT INTO `iot`.`users`
-            (`id`, `email`, `firstName`, `lastName`, `password`)
-            VALUES
-            (1, 'admin@gmail.com', 'admin', 'admin', '$2a$10$tYdeWpnAIRuPQW6AWhFfQ.sqmBkFcRGIvx5VD3Hzjt1xumczbQZPO');
-
-        </sql>
-    </changeSet>
-
-
-
 
 </databaseChangeLog>

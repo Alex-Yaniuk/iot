@@ -18,6 +18,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="dashboard" options="" />
+      <module name="datareceiverservice" options="" />
     </option>
   </component>
 </project>

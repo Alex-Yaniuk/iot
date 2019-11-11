@@ -20,6 +20,7 @@
         <mysql.version>8.0.18</mysql.version>
         <lombok.version>1.18.10</lombok.version>
         <swagger.version>2.9.2</swagger.version>
+        <start-class>by.pvt.MainApp</start-class>
     </properties>
 
     <dependencyManagement>

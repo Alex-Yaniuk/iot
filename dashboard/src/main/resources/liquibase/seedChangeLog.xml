@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<databaseChangeLog xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                   xmlns="http://www.liquibase.org/xml/ns/dbchangelog" xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+    <changeSet id="insertAdmin" author="alex">
+        <sql>
+            INSERT INTO `iot`.`users`
+            (`id`, `email`, `firstName`, `lastName`, `password`)
+            VALUES
+            (1, 'admin@gmail.com', 'admin', 'admin', '$2a$10$tYdeWpnAIRuPQW6AWhFfQ.sqmBkFcRGIvx5VD3Hzjt1xumczbQZPO');
+
+        </sql>
+    </changeSet>
+
+    <changeSet id="insertDeviceid1" author="alex">
+        <sql>
+            INSERT INTO `iot`.`devices`
+            (`id`,
+            `ipAddress`,
+            `location`)
+            VALUES
+            (1,
+            '123.123.123',
+            'Minsk');
+        </sql>
+    </changeSet>
+
+    <changeSet id="insertSensorsForDeviceid1" author="alex">
+        <sql>
+            INSERT INTO `iot`.`sensors`
+            (`id`, `value`, `device_id`)
+            VALUES (1,'temperature', 1);
+
+            INSERT INTO `iot`.`sensors`
+            (`id`, `value`, `device_id`)
+            VALUES
+            (2, 'speed', 1);
+        </sql>
+    </changeSet>
+
+    <changeSet id="insertDeviceid2" author="alex">
+        <sql>
+            INSERT INTO `iot`.`devices`
+            (`id`,
+            `ipAddress`,
+            `location`)
+            VALUES
+            (2,
+            '122.143.11233',
+            'Brest');
+        </sql>
+    </changeSet>
+
+    <changeSet id="insertSensorsForDeviceid2" author="alex">
+        <sql>
+            INSERT INTO `iot`.`sensors`
+            (`id`, `value`, `device_id`)
+            VALUES (3,'temperature', 2);
+
+            INSERT INTO `iot`.`sensors`
+            (`id`, `value`, `device_id`)
+            VALUES
+            (4, 'speed', 2);
+        </sql>
+    </changeSet>
+
+</databaseChangeLog>

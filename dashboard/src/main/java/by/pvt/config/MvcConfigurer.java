@@ -3,26 +3,21 @@ package by.pvt.config;
 import org.apache.commons.dbcp2.BasicDataSource;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
-import org.springframework.context.support.ReloadableResourceBundleMessageSource;
-import org.springframework.context.support.ResourceBundleMessageSource;
 import org.springframework.core.env.Environment;
 import org.springframework.orm.hibernate5.HibernateTransactionManager;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBean;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.web.servlet.config.annotation.EnableWebMvc;
-import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 import org.springframework.web.servlet.view.InternalResourceViewResolver;
 
 import javax.sql.DataSource;
-import java.util.LinkedHashSet;
+import java.beans.ConstructorProperties;
 import java.util.Properties;
-import java.util.Set;
 
 @Configuration
 @EnableWebMvc
@@ -34,10 +29,6 @@ public class MvcConfigurer implements WebMvcConfigurer {
 
     @Autowired
     private Environment env;
-
-
-
-
 
     @Bean
     public InternalResourceViewResolver internalResourceViewResolver() {
@@ -53,11 +44,11 @@ public class MvcConfigurer implements WebMvcConfigurer {
     public BasicDataSource dataSource() {
         BasicDataSource dataSource = new BasicDataSource();
 
-        dataSource.setUrl(env.getProperty("connection.url"));
+        dataSource.setUrl(env.getProperty("url"));
         dataSource.setUsername(env.getProperty("connection.username"));
-        dataSource.setPassword(env.getProperty("connection.password"));
-        dataSource.setDriverClassName(env.getProperty("connection.driver_class"));
-        dataSource.setMaxTotal(Integer.parseInt(env.getProperty("connection.max_total")));
+        dataSource.setPassword(env.getProperty("password"));
+        dataSource.setDriverClassName(env.getProperty("driver"));
+        dataSource.setMaxTotal(Integer.parseInt(env.getProperty("max_total")));
 
         return dataSource;
     }
@@ -94,7 +85,6 @@ public class MvcConfigurer implements WebMvcConfigurer {
 
         return transactionManager;
     }
-
 
 
 }
