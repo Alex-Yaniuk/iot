@@ -34,7 +34,7 @@
 
     <profiles>
         <profile>
-            <id>create_database</id>
+            <id>kjnk</id>
             <activation>
                 <activeByDefault>false</activeByDefault>
             </activation>
