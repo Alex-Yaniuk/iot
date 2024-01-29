@@ -1,6 +1,6 @@
 ---
-title: Deployment {{ env.ENVIRONMENT }} - {{ env.SERVICE_NAME }}
-labels: deployment, {{ env.ENVIRONMENT }}, {{ env.SERVICE_NAME }}
+title: Deployment {{ env.ENVIRONMENT }} - {{ env.SERVICE_NAME }} - {{ payload.sender.login }}
+labels: {{ payload.sender.login }}, deployment, {{ env.ENVIRONMENT }}, {{ env.SERVICE_NAME }}
 ---
 
 ## Details
