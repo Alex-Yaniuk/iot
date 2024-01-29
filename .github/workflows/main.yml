@@ -16,11 +16,18 @@ jobs:
   steps:
    - uses: actions/checkout@v3
    - name: Open issue
+     id: create-issue
      uses: JasonEtco/create-an-issue@v2.9.1
      env:
        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-       SERVICE_NAME: ${{ inputs.application }}
      with:
       assignees: ${{ github.actor }}
       filename: .github/issues/deployment_request.md
+   - name: Label issue
+     run: gh issue edit "$NUMBER" --add-label "$LABELS"
+     env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+      NUMBER: ${{ steps.create-issue.outputs.number }}
+      LABELS: triage, ${{ inputs.application }}
    
