@@ -14,6 +14,7 @@ jobs:
  open_issue:
   runs-on: ubuntu-latest
   steps:
+   - uses: actions/checkout@v3
    - name: Open issue
      uses: JasonEtco/create-an-issue@v2
      env:
