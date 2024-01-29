@@ -1,0 +1,23 @@
+name: Test labels
+
+on:
+  workflow_dispatch:
+   inputs:
+    application: 
+     required: false
+     type: choice 
+     options: 
+      - first
+      - second
+
+jobs:
+ open_issue:
+  runs-on: ubuntu-latest
+  steps:
+   - name: Open issue
+     uses: JasonEtco/create-an-issue@v2
+     env:
+       GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+     with:
+      assignees: ${{ github.actor }}
+   
